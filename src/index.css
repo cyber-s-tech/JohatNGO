@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+body{
+    font-family: "Poppins", sans-serif;
+}
+.font-caveat {
+  font-family: "Caveat", cursive;
+}
+
+.font-display{
+    font-family: "Playfair Display", serif;
+}
+

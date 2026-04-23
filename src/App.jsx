@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import TopHeader from "./Components/Layouts/TopHeader";
 import Header from "./Components/Layouts/Header";
 import Footer from "./Components/Layouts/Footer";
 import HomeComponents from "./Components/Pages/Home/HomeComponents";
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      <TopHeader/>
       <Header/>
         <Routes>
           <Route path="/" element={<HomeComponents/>} />
