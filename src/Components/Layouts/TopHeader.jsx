@@ -15,35 +15,32 @@ export default function TopHeader() {
       <div className="absolute inset-0 bg-[#F2F0EC]" />
 
       {/* LEFT SLANTED BACKGROUND (PIXEL PERFECT) */}
-      <div
-        className="absolute top-0 left-0 h-full bg-[#FFAC00] w-[65%] lg:w-[40%]"
-        style={{
-          
-          clipPath: "polygon(0 0, 100% 0, 92% 100%, 0% 100%)",
-        }}
-      />
+      <div  className="absolute top-0 left-0 h-full bg-[#FFAC00] w-[68%] lg:w-[58%] xl:w-[46%] " style={{
+    clipPath: "polygon(0% 0%, 100% 0%, 98% 100%, 0% 100%)",
+  }}
+/>
 
       {/* CONTENT */}
       <div className="relative max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 xl:px-[84px] py-4 flex items-center justify-between">
         
         {/* LEFT CONTENT (LOCKED INSIDE SHAPE) */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 lg:gap-[12px] text-white">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 md:gap-4 lg:gap-9 text-white">
           
           <div className="flex items-center gap-2">
             <div className="bg-[#1F6B5A] p-1 md:p-2 rounded-full">
-              <EnvelopeSimpleIcon  weight="fill" className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"/>
+              <EnvelopeSimpleIcon  weight="fill" className="w-4 h-4 lg:w-6 lg:h-6"/>
             </div>
-            <a href="mailto:johat1011953@outlook.com" className="text-sm font-medium">
+            <a href="mailto:johat1011953@outlook.com" className="cursor-pointer text-[10px] sm:text-xs font-semibold">
               johat1011953@outlook.com
             </a>
           </div>
 
           <div className="flex items-center gap-2">
-            <div className="bg-[#1F6B5A] p-1 md:p-2 rounded-full -rotate-90">
-              <PhoneIcon  weight="fill" className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"/>
+            <div className="bg-[#1F6B5A] p-1 md:p-2 rounded-full ">
+              <PhoneIcon  weight="fill" className="w-4 h-4 lg:w-6 lg:h-6"/>
             </div>
-            <a href="tel:+1-231-427-2289" className="text-sm font-medium">
-              +1-231-427-2289
+            <a href="tel:+1-231-427-2289" className="cursor-pointer text-[10px] sm:text-xs font-semibold">
+              +1-231-427-2289 / +1-231-427-2289
             </a>
           </div>
         </div>
@@ -51,13 +48,13 @@ export default function TopHeader() {
         {/* RIGHT CONTENT */}
         <div className="flex items-center gap-[13.8px]">
           <div className="bg-[#1F6B5A] p-1 md:p-2 rounded-full text-white">
-            <FacebookLogoIcon className="w-5 h-5 md:w-6 md:h-6" />
+            <FacebookLogoIcon className="cursor-pointer w-4 h-4 lg:w-6 lg:h-6" />
           </div>
           <div className="bg-[#1F6B5A] p-1 md:p-2 rounded-full text-white">
-            <XLogoIcon className="w-5 h-5 md:w-6 md:h-6" />
+            <XLogoIcon className="cursor-pointer w-4 h-4 lg:w-6 lg:h-6" />
           </div>
           <div className="bg-[#1F6B5A] p-1 md:p-2 rounded-full text-white">
-            <InstagramLogoIcon className="w-5 h-5 md:w-6 md:h-6" />
+            <InstagramLogoIcon className="cursor-pointer w-4 h-4 lg:w-6 lg:h-6" />
           </div>
         </div>
       </div>

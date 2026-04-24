@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Homebanner from './Homebanner';
 
 const HomeComponents = () => {
   return (
-    <div>HomeComponents</div>
+    <div>
+      <Homebanner/>
+    </div>
   )
 }
 
