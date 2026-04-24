@@ -1,8 +1,8 @@
 import React from "react";
 import foot from "../../assets/footer_background.png";
 import logo from "../../assets/johat_logo.png";
-import { FacebookLogo, InstagramLogo, TwitterLogo, PinterestLogo } from "@phosphor-icons/react";
-import { MapPin, Phone, EnvelopeSimpleOpenIcon } from "@phosphor-icons/react";
+import { FacebookLogo, InstagramLogo, XLogoIcon, PinterestLogo } from "@phosphor-icons/react";
+import { MapPinIcon, Phone, EnvelopeSimpleOpenIcon } from "@phosphor-icons/react";
 
 const Footer = () => {
   return (
@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="max-w-[1440px] mx-auto px-[20px] xl:px-[78px] pt-[81px] pb-[42px]">
 
         {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-y-12 xl:gap-x-[140px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-y-12 xl:gap-x-[100px]">
 
           {/* 1st Column */}
           <div>
@@ -29,7 +29,7 @@ const Footer = () => {
           {/* 2nd Column */}
           <div>
             <div className="flex items-center gap-3 mb-[29px]">
-              <h3 className="text-[22px] font-extrabold font-playfair">
+              <h3 className="text-[22px] font-extrabold font-display">
                 Quick Links
               </h3>
 
@@ -56,7 +56,7 @@ const Footer = () => {
           {/* 3rd Column */}
           <div>
             <div className="flex items-center gap-3 mb-[29px]">
-              <h3 className="text-[22px] font-extrabold font-playfair">
+              <h3 className="text-[22px] font-extrabold font-display">
                 Non Profit
               </h3>
 
@@ -87,7 +87,7 @@ const Footer = () => {
           {/* 4th Column */}
           <div>
             <div className="flex items-center gap-3 mb-[29px]">
-              <h3 className="text-[22px] font-extrabold font-playfair">
+              <h3 className="text-[22px] font-extrabold font-display">
                 Contact
               </h3>
 
@@ -101,26 +101,42 @@ const Footer = () => {
 
               {/* Address */}
               <li className="flex items-start gap-3">
-                <MapPin size={28} weight="regular" className="text-[#FFAC00] mt-[2px]" />
-                <p className="text-[16px] font-medium leading-[24px]">
+                <MapPinIcon size={45} weight="regular" className="text-[#FFAC00] mt-[1px]" />
+
+                <a
+                  href="https://maps.app.goo.gl/2kmyUZe9Ac4b7R2z8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[16px] font-medium leading-[24px] hover:translate-x-[6px] transition inline-block"
+                >
                   3975 Purverwoods Rd, Williamsburg, MI 49690, USA
-                </p>
+                </a>
               </li>
 
               {/* Phone */}
-              <li className="flex items-center gap-3">
-                <Phone size={28} weight="regular" className="text-[#FFAC00]" />
-                <a
-                  href="tel:+12314272289"
-                  className="text-[16px] font-medium hover:translate-x-[6px] transition inline-block"
-                >
-                  +1-231-427-2289
-                </a>
+              <li className="flex items-start gap-3">
+                <Phone size={28} weight="regular" className="text-[#FFAC00] mt-[3px]" />
+
+                <div className="flex flex-col gap-[6px]">
+                  <a
+                    href="tel:+12314272289"
+                    className="text-[16px] font-medium hover:translate-x-[6px] transition inline-block"
+                  >
+                    +1-231-427-2289
+                  </a>
+
+                  <a
+                    href="tel:+12314596853"
+                    className="text-[16px] font-medium hover:translate-x-[6px] transition inline-block"
+                  >
+                    +1-231-459-6853
+                  </a>
+                </div>
               </li>
 
               {/* Email */}
               <li className="flex items-center gap-3">
-                <EnvelopeSimpleOpenIcon size={28} weight="fill" className="text-[#FFAC00] shrink-0" />
+                <EnvelopeSimpleOpenIcon size={28} weight="regular" className="text-[#FFAC00] shrink-0" />
                 <a
                   href="mailto:johat101953@outlook.com"
                   className="text-[16px] font-medium hover:translate-x-[6px] transition inline-block"
@@ -135,9 +151,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="mt-[60px] mb-[42px] flex justify-center">
-          <div className="w-full max-w-[1170px] bg-[#232323] rounded-[10px] px-[20px] xl:px-[30px] h-[100px] flex flex-col md:flex-row items-center justify-between">
-
-            {/* Left Text */}
+          <div className="w-full max-w-[1170px] bg-[#232323] rounded-[10px] px-[20px] xl:px-[30px] h-auto md:h-[100px] py-4 md:py-0 flex flex-col md:flex-row items-center justify-between">         {/* Left Text */}
             <p className="text-[15px] text-[#898989] text-center md:text-left">
               © Copyright Year{" "}
               <span className="text-[#FFAC00]">
@@ -145,7 +159,7 @@ const Footer = () => {
               </span>
               . All Rights Reserved by{" "}
               <a
-                href="#"
+                href="https://ahaansoftware.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#FFAC00]"
@@ -164,7 +178,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-[#FFAC00] flex items-center justify-center hover:scale-110 transition"
               >
-                <TwitterLogo size={20} weight="regular" className="text-white" />
+                <XLogoIcon size={20} weight="regular" className="text-white" />
               </a>
 
               {/* Facebook */}
