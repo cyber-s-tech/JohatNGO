@@ -94,7 +94,7 @@ export default function Homebanner() {
             <div
               className="
                 absolute -top-4 left-0 h-[909px] bg-[#1A685B]
-                w-[66%] lg:w-[55%] xl:w-[44%]
+                w-[66%] sm:w-[72%] lg:w-[55%] xl:w-[44%]
               "
               style={{
     clipPath: "polygon(0% 0%, 100% 0%, 66% 100%, 0% 100%)",
@@ -132,7 +132,7 @@ export default function Homebanner() {
                 </p>
 
                 {/* BUTTON */}
-                <button className="bg-[#FFAC00] -skew-x-[12deg] px-7 py-2 text-sm md:text-base md:px-9 md:py-4">
+                <button className="cursor-pointer bg-[#FFAC00] -skew-x-[12deg] px-7 py-2 text-sm md:text-base md:px-9 md:py-4">
                   <span className="block skew-x-[12deg] text-white text-sm font-semibold uppercase">
                     Contact Now
                   </span>

@@ -9,7 +9,7 @@ export default function Header() {
     <header className="w-full bg-white">
 
       {/* CONTAINER */}
-      <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 xl:px-[72px]">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 xl:px-[72px] py-1">
 
         {/* GRID LAYOUT */}
         <div className="grid grid-cols-3 gap-8">
@@ -70,8 +70,8 @@ export default function Header() {
             <button
               className="cursor-pointer  hidden md:inline-block bg-[#FFAC00] -skew-x-[12deg] scale-y-[0.98] px-6 py-4 lg:px-[32px] lg:py-[22.5px]"
             >
-              <span className="block skew-x-[12deg] text-white text-sm font-semibold whitespace-nowrap">
-                GIVE SUPPORT
+              <span className="block skew-x-[12deg] text-white text-sm font-semibold whitespace-nowrap uppercase">
+                Give Support
               </span>
             </button>
           </div>
@@ -93,7 +93,7 @@ export default function Header() {
       <div
         className={`fixed top-0 right-0 h-full w-[280px] bg-white shadow-lg z-50 transform transition-transform duration-300 ${open ? "translate-x-0" : "translate-x-full"
           }`}
-      ><button onClick={() => setOpen(false)} className=" p-6 text-2xl left-0 text-[#1F6B5A]">✕</button>
+      ><button onClick={() => setOpen(false)} className="ml-6 my-6 py-1 px-2.5 text-xl left-0 bg-[#1F6B5A] text-white rounded-full">✕</button>
         <div className=" flex flex-col gap-6">
 
           <NavLink
@@ -135,13 +135,12 @@ export default function Header() {
           </NavLink>
 
 
-          <button
-            className="bg-[#FFAC00] md:hidden -skew-x-[12deg] scale-y-[0.98] px-[32px] py-[22.5px]"
-          >
-            <span className="block skew-x-[12deg] text-white text-sm font-semibold whitespace-nowrap">
-              GIVE SUPPORT
-            </span>
-          </button>
+          <button className="bg-[#FFAC00] -skew-x-[12deg] px-7 py-2 text-sm md:text-base md:px-9 md:py-4 mx-6">
+                  <span className="block skew-x-[12deg] text-white text-sm font-semibold uppercase">
+                   Give Support
+                  </span>
+                </button>
+
         </div>
       </div>
 
