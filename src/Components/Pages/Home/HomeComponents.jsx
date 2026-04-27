@@ -5,6 +5,7 @@ import Aboutus from './Aboutus';
 import Donation from './Donation';
 import CallToAction from './CallToAction';
 import RecentWork from './RecentWork';
+import Testimonials from './Testimonials';
 
 const HomeComponents = () => {
   return (
@@ -14,6 +15,7 @@ const HomeComponents = () => {
       <Aboutus/>
       <CallToAction/>
       <Donation/>
+      <Testimonials/>
       <RecentWork/>
     </div>
   )

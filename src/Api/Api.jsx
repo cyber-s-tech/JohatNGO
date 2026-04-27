@@ -30,3 +30,12 @@ export const getWorks = async () => {
   const res = await API.get("/works"); // 👈 projects na, works
   return res.data;
 };
+
+// ==============================
+// 🔥 TESTIMONIALS API
+// ==============================
+
+export const getTestimonials = async () => {
+  const res = await API.get("/testimonials");
+  return res.data;
+};
