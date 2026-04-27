@@ -2,11 +2,11 @@ import React from 'react'
 
 const Aboutus = () => {
   return (
-        <div className="max-w-[1440px] mx-auto px-4 py-16 sm:px-6 lg:px-8 bg-white">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="max-w-[1440px] mx-auto py-16 px-4 md:px-8 lg:px-9 xl:px-[72px] bg-white">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-12 items-center">
  
         {/* Left Column: Image Container */}
-        <div className="relative h-[300px] md:h-[640px] w-full overflow-hidden">
+        <div className="relative h-[300px] md:h-[500px] lg:h-[640px] w-full overflow-hidden">
           <img
             src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80"
             alt="Volunteer reading with children"
