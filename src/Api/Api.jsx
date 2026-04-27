@@ -39,3 +39,12 @@ export const getTestimonials = async () => {
   const res = await API.get("/testimonials");
   return res.data;
 };
+
+// 🔥 FIXED POST API
+export const submitDonation = async (data) => {
+  const res = await axios.post(
+    "https://johatngo.ahaanmedia.com/wp-json/custom/v1/donation",
+    data
+  );
+  return res.data;
+};
