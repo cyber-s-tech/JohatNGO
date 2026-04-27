@@ -58,7 +58,7 @@ const Service = () => {
 
   return (
 <div className="py-24 bg-gray-100">
-  <div className="max-w-[1440px] mx-auto grid md:grid-cols-3 gap-30 px-6">
+  <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 xl:px-[72px] grid md:grid-cols-3 gap-[96px]">
 
     {services.map((item, i) => {
       const acf = item.acf;

@@ -11,7 +11,7 @@ const Footer = () => {
       style={{ backgroundImage: `url(${foot})` }}
     >
       {/* Main Container */}
-      <div className="max-w-[1440px] mx-auto px-[20px] xl:px-[78px] pt-[81px] pb-[42px]">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 xl:px-[72px] pt-[81px] pb-[42px]">
 
         {/* GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-y-12 xl:gap-x-[100px]">

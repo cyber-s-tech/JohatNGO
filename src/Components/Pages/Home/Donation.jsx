@@ -4,11 +4,11 @@ const Donation = () => {
   return (
     <section className="max-w-[1440px] mx-auto my-12 grid grid-cols-1 md:grid-cols-2 overflow-hidden">
  
-      <div className="relative bg-[#f8f8f8] p-4 md:p-6 lg:p-16  shadow-sm overflow-hidden">
+      <div className="relative bg-[#f8f8f8] p-4 md:p-6 lg:p-12 xl:p-[75px]  shadow-sm overflow-hidden">
  
         {/* Background image with opacity */}
         <div
-          className="absolute w-[250px] h-[250px] xl:w-[300px] xl:h-[300px] bg-no-repeat pointer-events-none"
+          className="absolute w-[250px] h-[250px] xl:w-[300px] xl:h-[300px] bg-no-repeat pointer-events-none "
           style={{
             backgroundImage: "url('/vut.svg')",
             backgroundPosition: "right bottom",
@@ -16,7 +16,7 @@ const Donation = () => {
            
             right: "-35px",
             bottom: "-30px",
-            opacity: 0.15,
+            opacity: 1,
           }}
         />
         <div className="relative z-10">

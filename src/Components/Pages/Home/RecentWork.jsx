@@ -35,7 +35,7 @@ const RecentWork = () => {
 
   return (
     <div className="py-24">
-      <div className="max-w-[1440px] mx-auto px-4 py-2 sm:px-6 lg:px-8 bg-white">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 xl:px-[72px] bg-white">
 
         {/* 🔥 Heading */}
         <div className="mb-12">
@@ -49,7 +49,7 @@ const RecentWork = () => {
         </div>
 
         {/* 🔥 Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-[19px]">
 
           {works.map((item, i) => {
             const imageUrl = images[item.acf?.image];
