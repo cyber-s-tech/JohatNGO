@@ -67,13 +67,12 @@ export default function Header() {
 
           {/* RIGHT BUTTON */}
           <div className="flex justify-end items-center py-[22px]">
-            <button
-              className="cursor-pointer  hidden md:inline-block bg-[#FFAC00] -skew-x-[12deg] scale-y-[0.98] px-6 py-4 lg:px-[32px] lg:py-[22.5px]"
-            >
-              <span className="block skew-x-[12deg] text-white text-sm font-semibold whitespace-nowrap uppercase">
-                Give Support
-              </span>
-            </button>
+            <button className="hidden md:inline-block bg-[#FFAC00] -skew-x-[12deg] px-7 py-2 text-sm md:text-base md:px-9 md:py-4 cursor-pointer">
+                  <span className="block skew-x-[12deg] text-white text-sm font-semibold uppercase">
+                    Give Support
+                  </span>
+                </button>
+
           </div>
 
           {/* MOBILE MENU BUTTON */}
@@ -135,11 +134,12 @@ export default function Header() {
           </NavLink>
 
 
-          <button className="bg-[#FFAC00] -skew-x-[12deg] px-7 py-2 text-sm md:text-base md:px-9 md:py-4 mx-6">
+          <button className="md:hidden bg-[#FFAC00] -skew-x-[12deg] px-7 py-2 text-sm md:text-base md:px-9 md:py-4  mx-6 cursor-pointer">
                   <span className="block skew-x-[12deg] text-white text-sm font-semibold uppercase">
-                   Give Support
+                    Give Support
                   </span>
                 </button>
+                
 
         </div>
       </div>

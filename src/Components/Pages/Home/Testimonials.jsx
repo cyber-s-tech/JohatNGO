@@ -1,21 +1,31 @@
-import { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
-import { Quotes } from "@phosphor-icons/react";
-
-import { getTestimonials } from "../../../Api/Api"; 
-
-import "swiper/css";
-import "swiper/css/pagination";
+import { useEffect, useRef, useState } from "react";
+import { Quotes, StarIcon } from "@phosphor-icons/react";
+import { getTestimonials } from "../../../Api/Api";
+import halftone from "../../../assets/halftone.png";
 
 const Testimonials = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const [index, setIndex] = useState(1);
+  const timeoutRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const slideWidth = isMobile ? 100 : 85;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const loadTestimonials = async () => {
       try {
-        const res = await getTestimonials(); // 👈 API CALL
+        const res = await getTestimonials();
         setData(res);
       } catch (error) {
         console.error("Error fetching testimonials:", error);
@@ -27,12 +37,53 @@ const Testimonials = () => {
     loadTestimonials();
   }, []);
 
+  // create infinite loop array
+  const extended =
+    data.length > 0
+      ? [data[data.length - 1], ...data, data[0]]
+      : [];
+
+  // autoplay
+  useEffect(() => {
+    if (data.length === 0) return;
+
+    timeoutRef.current = setTimeout(() => {
+      setIsTransitioning(true);
+      setIndex((prev) => prev + 1);
+    }, 3000);
+
+    return () => clearTimeout(timeoutRef.current);
+  }, [index, data]);
+
+  // 👉 ADD IT HERE
+  useEffect(() => {
+    if (!isTransitioning) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsTransitioning(true);
+        });
+      });
+    }
+  }, [isTransitioning]);
+
+  const handleTransitionEnd = () => {
+    if (index === extended.length - 1) {
+      setIsTransitioning(false); // ⛔ stop animation
+      setIndex(1);
+    }
+
+    if (index === 0) {
+      setIsTransitioning(false);
+      setIndex(extended.length - 2);
+    }
+  };
+
   if (loading) {
     return <p className="text-center py-20">Loading testimonials...</p>;
   }
 
   return (
-    <section className="relative py-35 overflow-hidden">
+    <section className="relative py-32 overflow-hidden">
 
       {/* BACKGROUND IMAGE */}
       <div
@@ -41,20 +92,22 @@ const Testimonials = () => {
           backgroundImage:
             "url('https://johatngo.ahaanmedia.com/wp-content/uploads/2026/04/Image-3.png')",
         }}
-      ></div>
+      />
 
       {/* OVERLAY */}
-      <div className="absolute inset-0 bg-[#F2F2F2] opacity-50"></div>
+      <div className="absolute inset-0 bg-[#F2F2F2]/70"></div>
 
-      <div className="relative max-w-[1440px] mx-auto grid md:grid-cols-2 gap-16 items-center px-6">
+      {/* CONTENT */}
+      <div className="relative max-w-[1440px] mx-auto grid lg:grid-cols-2 gap-12 md:gap-20 items-center px-6">
 
-        {/* LEFT */}
+        {/* LEFT SIDE */}
         <div>
-          <p className="relative inline-block text-yellow-500 font-serif italic text-[24px] font-caveat font-bold after:content-[''] after:absolute after:left-0 after:top-0 after:w-1/2 after:border-t-2 after:border-yellow-500">
+          <p className="relative inline-block text-yellow-500 font-caveat text-[24px] font-bold italic mb-4
+          after:content-[''] after:absolute after:left-0 after:-top-1 after:w-1/2 after:border-t-2 after:border-yellow-500">
             Our Testimonials
           </p>
 
-          <h2 className="font-display text-[50px] font-bold leading-tight mb-6 text-black">
+          <h2 className="font-display text-[48px] font-bold leading-tight mb-6 text-black">
             What They’re <br /> Talking About us
           </h2>
 
@@ -63,70 +116,92 @@ const Testimonials = () => {
           </p>
         </div>
 
-        {/* RIGHT */}
-        <div className="relative">
+        {/* RIGHT SIDE SLIDER */}
+        <div className="relative overflow-hidden">
+          <img
+            src={halftone}
+            alt=""
+            className="absolute right-0 top-0 h-full w-auto  pointer-events-none select-none"
+          />
 
-          <Swiper
-            modules={[Pagination, Autoplay]}
-            spaceBetween={30}
-            slidesPerView={1.1}
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 3000 }}
+          <div
+            className="flex"
+            style={{
+              transform: `translateX(-${index * slideWidth}%)`,
+              transition: isTransitioning ? "transform 700ms ease-in-out" : "none",
+            }}
+
+            onTransitionEnd={handleTransitionEnd}
           >
-            {data.map((item) => (
-              <SwiperSlide key={item.id}>
-                <div className="bg-white rounded-2xl shadow-xl pt-14 pb-8 px-8 relative">
+            {extended.map((item, i) => (
+              <div
+                key={i}
+                className="pt-10 w-full md:w-[65%] lg:w-[90%] xl:w-[85%] pr-6 flex-shrink-0"
+              >
+                <div className="bg-white rounded-2xl shadow-xl pt-16 px-4 pb-4  md:px-6 md:pb-6 xl:pb-10 xl:px-10 relative">
 
-                  {/* PROFILE IMAGE */}
-                  <div className="absolute -top-10 left-8">
-                    <div className="bg-white p-1 rounded-full shadow-md">
+                  {/* AVATAR (green circle + image offset) */}
+                  <div className="absolute -top-10 left-10">
+                    <div className="w-[96px] h-[96px] bg-[#1A685B] rounded-full flex items-center justify-center">
                       <img
                         src={
-                          item.featured_image ||
+                          item?.featured_image ||
                           "https://via.placeholder.com/80"
                         }
                         alt=""
-                        className="w-20 h-20 rounded-full object-cover border-4 border-green-700"
+                        className="mr-2 mt-2 w-[92px] h-[92px] rounded-full object-cover border-4 border-white"
                       />
                     </div>
                   </div>
 
                   {/* QUOTE ICON */}
-                  {item.acf?.quote_icon && (
-                    <div className="absolute right-6 top-6 bg-green-700 text-white w-10 h-10 rounded-full flex items-center justify-center">
-                      <Quotes size={18} weight="fill" />
-                    </div>
-                  )}
+                  <div className="absolute right-6 top-6 bg-[#1A685B] text-white w-10 h-10 rounded-full flex items-center justify-center">
+                    <Quotes size={24} weight="fill" className="-rotate-180" />
+                  </div>
 
-                  {/* CONTENT */}
-                  <div>
+                  {/* TEXT CONTENT */}
+                  <div className="mt-4">
                     <h3
-                      className="text-xl font-semibold"
+                      className="text-xl font-semibold font-display text-[#313131]"
                       dangerouslySetInnerHTML={{
-                        __html: item.title.rendered,
+                        __html: item?.title?.rendered || "",
                       }}
                     />
 
-                    <p className="text-gray-400 text-sm mb-2">
-                      {item.acf?.designation}
+                    <p className="text-[#6F6F6F] text-sm mb-2">
+                      {item?.acf?.designation}
                     </p>
 
-                    <div className="text-yellow-400 text-lg mb-3">
-                      {"★".repeat(item.acf?.rating || 0)}
+                    <div className="flex gap-1 text-lg mb-3">
+                      {Array.from({ length: item?.acf?.rating || 0 }).map((_, i) => (
+                        <StarIcon key={i} size={20} color="#f3b42c" weight="fill" />
+                      ))}
                     </div>
 
                     <p
-                      className="text-gray-600 text-sm leading-relaxed"
+                      className="text-[#6F6F6F] text-xs md:text-base leading-relaxed"
                       dangerouslySetInnerHTML={{
-                        __html: item.content.rendered,
+                        __html: item?.content?.rendered || "",
                       }}
                     />
                   </div>
 
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          </div>
+
+          {/* DOTS */}
+          <div className="flex gap-2 mt-6 pb-2 justify-center">
+            {data.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIndex(i + 1)}
+                className={`w-2.5 h-2.5 rounded-full transition ${index === i + 1 ? "bg-green-700" : "bg-gray-300"
+                  }`}
+              />
+            ))}
+          </div>
 
         </div>
       </div>
