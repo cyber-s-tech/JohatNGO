@@ -68,7 +68,7 @@ const Testimonials = () => {
 
   const handleTransitionEnd = () => {
     if (index === extended.length - 1) {
-      setIsTransitioning(false); // ⛔ stop animation
+      setIsTransitioning(false); //  stop animation
       setIndex(1);
     }
 
@@ -102,12 +102,12 @@ const Testimonials = () => {
 
         {/* LEFT SIDE */}
         <div>
-          <p className="relative inline-block text-yellow-500 font-caveat text-[24px] font-bold italic mb-4
+          <p className="relative inline-block text-[#FFAC00] font-caveat text-[24px] font-bold italic mb-4
           after:content-[''] after:absolute after:left-0 after:-top-1 after:w-1/2 after:border-t-2 after:border-yellow-500">
             Our Testimonials
           </p>
 
-          <h2 className="font-display text-[48px] font-bold leading-tight mb-6 text-black">
+          <h2 className="font-display text-[32px] lg:text-[50px] leading-[45px] lg:leading-[60px] tracking-[-2px] font-bold leading-tight mb-6 text-black">
             What They’re <br /> Talking About us
           </h2>
 
@@ -197,7 +197,7 @@ const Testimonials = () => {
               <button
                 key={i}
                 onClick={() => setIndex(i + 1)}
-                className={`w-2.5 h-2.5 rounded-full transition ${index === i + 1 ? "bg-green-700" : "bg-gray-300"
+                className={`cursor-pointer w-2.5 h-2.5 rounded-full transition ${index === i + 1 ? "bg-green-700" : "bg-gray-300"
                   }`}
               />
             ))}

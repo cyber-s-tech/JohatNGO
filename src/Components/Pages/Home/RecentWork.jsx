@@ -89,11 +89,11 @@ const RecentWork = () => {
 
         {/* Heading */}
         <div className="mb-12">
-          <p className="relative inline-block text-yellow-500 font-serif italic text-[24px] font-caveat font-bold after:content-[''] after:absolute after:left-0 after:top-0 after:w-1/2 after:border-t-2 after:border-yellow-500">
+          <p className="relative inline-block text-[#FFAC00] text-xl md:text-[24px] font-caveat font-bold after:content-[''] after:absolute after:left-0 after:top-0 after:w-1/2 after:border-t-2 after:border-yellow-500">
             Complete Projects
           </p>
 
-          <h2 className="text-[50px] font-bold text-gray-800 font-display">
+          <h2 className="text-[32px] lg:text-[50px] leading-[45px] lg:leading-[60px] tracking-[-2px] font-bold text-gray-800 font-display">
             Our Recent Work
           </h2>
         </div>

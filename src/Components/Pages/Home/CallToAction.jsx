@@ -1,5 +1,5 @@
 import React from 'react';
- 
+import { Link } from "react-router-dom";
 const CallToAction = () => {
   return (
     <section className="relative h-[400px] md:h-[524px] w-full flex items-center justify-center text-center overflow-hidden">
@@ -7,7 +7,7 @@ const CallToAction = () => {
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80')`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/cta.jpg')`,
           filter: 'grayscale(100%)'
         }}
       />
@@ -31,9 +31,11 @@ const CallToAction = () => {
  
         {/* Skewed CTA Button */}
         <div className="pt-4 flex justify-center">
-          <button className="bg-[#FFAC00] text-white font-bold px-8 py-3 lg:py-4 lg:px-15 uppercase tracking-widest text-xs transition-colors duration-200 transform -skew-x-12">
+           <Link to="/contact">
+          <button className="cursor-pointer bg-[#FFAC00] text-white font-bold px-8 py-3 lg:py-4 lg:px-15 uppercase tracking-widest text-xs transition-colors duration-200 transform -skew-x-12">
             <span className="inline-block skew-x-12">Join Now</span>
           </button>
+          </Link>
         </div>
       </div>
     </section>

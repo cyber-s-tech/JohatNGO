@@ -103,7 +103,7 @@ const Service = () => {
 
               {/* ➡️ BUTTON */}
               <div className="mt-8 flex justify-center">
-                <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 shadow-sm">
+                <div className="cursor-pointer w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 shadow-sm">
                   →
                 </div>
               </div>

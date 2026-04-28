@@ -55,10 +55,10 @@ const Donation = () => {
         />
         <div className="relative z-10">
           <div className="mb-8">
-            <span className="relative inline-block text-yellow-500 font-serif italic text-[24px] font-caveat font-bold after:content-[''] after:absolute after:left-0 after:top-0 after:w-1/2 after:border-t-2 after:border-yellow-500">
+            <span className="relative inline-block text-[#FFAC00]  italic text-xl md:text-[24px] font-caveat font-bold after:content-[''] after:absolute after:left-0 after:top-0 after:w-1/2 after:border-t-2 after:border-yellow-500">
               Help us Donate
             </span>
-            <h2 className="font-display text-[50px] font-bold text-slate-900  mt-2">
+            <h2 className="font-display text-[32px] lg:text-[50px] leading-[45px] lg:leading-[60px] tracking-[-2px] font-bold text-slate-900  mt-2">
               Start Donating
             </h2>
           </div>
@@ -102,7 +102,7 @@ const Donation = () => {
             ></textarea>
 
             <div className="pt-4">
-              <button type="submit" className="bg-[#FFAC00] text-white font-bold px-8 py-3 lg:py-4 lg:px-15 uppercase tracking-widest text-xs transition-colors duration-200 transform -skew-x-12">
+              <button type="submit" className="cursor-pointer bg-[#FFAC00] text-white font-bold px-8 py-3 lg:py-4 lg:px-15 uppercase tracking-widest text-xs transition-colors duration-200 transform -skew-x-12">
                 <span className="inline-block skew-x-12 text-xs uppercase tracking-widest">
                   Send a Message
                 </span>
@@ -116,7 +116,7 @@ const Donation = () => {
       <div className="flex flex-col shadow-2xl  overflow-hidden">
         <div className="h-full md:h-2/3">
           <img
-            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80"
+            src="donation.jpg"
             alt="Children"
             className="w-full h-full object-cover"
           />

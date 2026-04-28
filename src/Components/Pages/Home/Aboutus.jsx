@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
+import React, { useEffect, useRef } from 'react';
+import { Link } from "react-router-dom";
+import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -53,7 +54,7 @@ const Aboutus = () => {
         {/* Left Column: Image Container */}
         <div className="relative h-[300px] md:h-[500px] lg:h-[640px] w-full overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80"
+            src="/about.png"
             alt="Volunteer reading with children"
             className="w-full h-full object-cover"
           />
@@ -62,7 +63,7 @@ const Aboutus = () => {
         {/* Right Column: Content */}
         <div  ref={rightRef} className="space-y-3 lg:space-y-6">
           <div className="space-y-2">
-            <span className="relative inline-block text-yellow-500 font-serif italic text-[24px] font-caveat font-bold after:content-[''] after:absolute after:left-0 after:top-0 after:w-1/2 after:border-t-2 after:border-yellow-500">
+            <span className="relative inline-block text-[#FFAC00] italic text-xl md:text-[24px] font-caveat font-bold after:content-[''] after:absolute after:left-0 after:top-0 after:w-1/2 after:border-t-2 after:border-yellow-500">
               About Us
             </span>
             <h2 className="font-display font-bold text-[32px] lg:text-[50px] leading-[45px] lg:leading-[60px] tracking-[-2px] text-slate-900 align-middle">
@@ -110,9 +111,11 @@ const Aboutus = () => {
  
           {/* CTA Button */}
           <div className="pt-4">
-            <button className="bg-[#FFAC00] text-white font-bold px-8 py-3 lg:py-4 lg:px-15 uppercase tracking-widest text-xs transition-colors duration-200 transform -skew-x-12">
+            <Link to="/about-us">
+            <button className="cursor-pointer bg-[#FFAC00] text-white font-bold px-8 py-3 lg:py-4 lg:px-15 uppercase tracking-widest text-xs transition-colors duration-200 transform -skew-x-12">
               <span className="inline-block skew-x-12">Learn More</span>
             </button>
+            </Link>
           </div>
         </div>
  
