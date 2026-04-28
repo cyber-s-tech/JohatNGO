@@ -44,13 +44,18 @@ const Footer = () => {
             </div>
 
             <ul className="space-y-[20px]">
-              {["Home", "About Us", "Our Work", "Contact"].map((item, i) => (
+              {[
+                { name: "Home", link: "/" },
+                { name: "About Us", link: "/about-us" },
+                { name: "Our Work", link: "/our-work" },
+                { name: "Contact", link: "/contact" },
+              ].map((item, i) => (
                 <li key={i}>
                   <a
-                    href="#"
+                    href={item.link}
                     className="text-[16px] font-medium transition-all duration-300 hover:translate-x-[6px] inline-block"
                   >
-                    {item}
+                    {item.name}
                   </a>
                 </li>
               ))}
