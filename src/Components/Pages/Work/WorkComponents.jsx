@@ -1,8 +1,16 @@
-import React from 'react'
+import React from 'react';
+import RecentWork from '../Home/RecentWork';
+import CallToAction from '../Home/CallToAction';
+import Donation from '../Home/Donation';
 
 const WorkComponents = () => {
   return (
-    <div>WorkComponents</div>
+    <div>
+      WorkComponents
+    <RecentWork/>
+    <CallToAction/>
+    <Donation/>
+</div>
   )
 }
 
