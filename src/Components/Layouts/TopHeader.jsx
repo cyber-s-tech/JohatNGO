@@ -31,7 +31,7 @@ export default function TopHeader() {
               <EnvelopeSimpleIcon  weight="fill" className="w-4 h-4 lg:w-6 lg:h-6"/>
             </div>
             <a href="mailto:johat1011953@outlook.com" className="cursor-pointer text-[10px] sm:text-xs font-semibold">
-              johat1011953@outlook.com
+              johat1o11953@outlook.com
             </a>
           </div>
 
