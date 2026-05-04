@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { submitDonation } from "../../../Api/Api";
+import { Link } from "react-router-dom";
 const Donation = () => {
   const [form, setForm] = useState({
     name: "",
@@ -53,8 +55,8 @@ const Donation = () => {
           }}
         />
         <div className="relative z-10">
-          <div className="mb-8">
-            <span className="relative inline-block text-[#FFAC00]  italic text-xl md:text-[24px] font-caveat font-bold after:content-[''] after:absolute after:left-0 after:top-0 after:w-1/2 after:border-t-2 after:border-yellow-500">
+          <div className=" mb-8">
+            <span className="relative inline-block text-[#FFAC00]  italic text-xl md:text-[24px] font-caveat font-bold after:content-[''] after:absolute after:left-0 after:top-0 after:w-1/2 after:border-t-2 after:border-yellow-500 pt-2">
               Help us Donate
             </span>
             <h2 className="font-display text-[32px] lg:text-[50px] leading-[45px] lg:leading-[60px] tracking-[-2px] font-bold text-slate-900  mt-2">
@@ -101,7 +103,7 @@ const Donation = () => {
             ></textarea>
 
             <div className="pt-4">
-              <button type="submit" className="cursor-pointer bg-[#FFAC00] text-white font-bold px-8 py-3 lg:py-4 lg:px-15 uppercase tracking-widest text-xs transition-colors duration-200 transform -skew-x-12">
+              <button type="submit" className="cursor-pointer bg-[#FFAC00] text-white font-bold px-8 py-3 lg:py-4 lg:px-9 uppercase tracking-widest text-xs hover:bg-[#1F6B5A] hover:scale-110 transition-all duration-300 cursor-pointer transform -skew-x-12">
                 <span className="inline-block skew-x-12 text-xs uppercase tracking-widest">
                   Send a Message
                 </span>

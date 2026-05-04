@@ -49,14 +49,14 @@ export default function TopHeader() {
 
         {/* RIGHT CONTENT */}
         <div className="flex items-center gap-[13.8px]">
-          <div className="bg-[#1F6B5A] p-1 md:p-2 rounded-full text-white">
-            <FacebookLogoIcon className="cursor-pointer w-4 h-4 lg:w-6 lg:h-6" />
+          <div className="bg-[#1F6B5A] p-1 md:p-2 rounded-full text-white hover:bg-[#FFAC00] hover:scale-110 transition-all duration-300 cursor-pointer">
+            <FacebookLogoIcon className="w-4 h-4 lg:w-6 lg:h-6" />
           </div>
-          <div className="bg-[#1F6B5A] p-1 md:p-2 rounded-full text-white">
-            <XLogoIcon className="cursor-pointer w-4 h-4 lg:w-6 lg:h-6" />
+          <div className="bg-[#1F6B5A] p-1 md:p-2 rounded-full text-white hover:bg-[#FFAC00] hover:scale-110 transition-all duration-300 cursor-pointer">
+            <XLogoIcon className="w-4 h-4 lg:w-6 lg:h-6" />
           </div>
-          <div className="bg-[#1F6B5A] p-1 md:p-2 rounded-full text-white">
-            <InstagramLogoIcon className="cursor-pointer w-4 h-4 lg:w-6 lg:h-6" />
+          <div className="bg-[#1F6B5A] p-1 md:p-2 rounded-full text-white hover:bg-[#FFAC00] hover:scale-110 transition-all duration-300 cursor-pointer">
+            <InstagramLogoIcon className="w-4 h-4 lg:w-6 lg:h-6" />
           </div>
         </div>
       </div>

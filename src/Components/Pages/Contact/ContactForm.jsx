@@ -200,7 +200,7 @@ const required = { required: "This field is required" };
   </div>
 )}
 
-                    <button className="bg-[#FFAC00] -skew-x-[12deg] px-7 py-2 text-sm md:text-base md:px-9 md:py-4   cursor-pointer">
+                    <button className="bg-[#FFAC00] -skew-x-[12deg] px-7 py-2 text-sm md:text-base md:px-9 md:py-4 hover:bg-[#1F6B5A] hover:scale-110 transition-all duration-300 cursor-pointer">
                         <span className="block skew-x-[12deg] text-white text-sm font-semibold uppercase">
                             Submit Now
                         </span>

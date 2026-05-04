@@ -15,7 +15,7 @@ const ContactBanner = () => {
       
 
       {/* Content */}
-      <div className="z-10 relative max-w-[1440px] mx-auto items-center [px-4 md:px-8 lg:px-12 xl:px-490px]">
+      <div className="z-10 relative max-w-[1440px] mx-auto items-center [px-4 md:px-8 lg:px-12 xl:px-[490px]">
         <h1 className="text-white text-3xl sm:text-4xl md:text-[80px] leading-snug font-bold font-display">
           Contact Us
         </h1>

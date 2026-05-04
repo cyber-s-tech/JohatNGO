@@ -134,7 +134,7 @@ export default function Homebanner() {
 
                 {/* BUTTON */}
                 <Link to="/contact">
-                <button className="cursor-pointer bg-[#FFAC00] -skew-x-[12deg] px-7 py-2 text-sm md:text-base md:px-9 md:py-4">
+                <button className="cursor-pointer bg-[#FFAC00] -skew-x-[12deg] px-7 py-2 text-sm md:text-base md:px-9 md:py-4 hover:scale-110 transition-all duration-300">
                   <span className="block skew-x-[12deg] text-white text-sm font-semibold uppercase">
                     Contact Now
                   </span>

@@ -1,30 +1,32 @@
+import React, { useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { submitDonationEntry } from "../../../Api/Api";
 
 const DonationPopupForm = ({ isOpen, onClose, service }) => {
   const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+      register,
+      handleSubmit,
+      watch,
+      formState: { errors },
+      reset,
+      setValue,
+    } = useForm({
+      mode: "onChange",
+      defaultValues: {
+        phone: "",
+      },
+    });
+  
 
-const onSubmit = async (data) => {
-  try {
-    const res = await submitDonationEntry(data);
+ const onSubmitForm = (data) => {
+  console.log("Pop up Form Data:", data);
+  console.log("Submitted Successfully");
 
-    if (res.success) {
-      alert("Saved in WordPress!");
-      reset();
-      onClose();
-    }
-  } catch (err) {
-    console.log(err);
-  }
+  reset();
 };
 
   if (!isOpen) return null;
-
+const required = { required: "This field is required" };
   return (
     <div
       onClick={onClose}
@@ -58,61 +60,166 @@ const onSubmit = async (data) => {
 
         {/* Form */}
         <form
-          onSubmit={handleSubmit(onSubmit)}
+         onSubmit={handleSubmit(onSubmitForm)}
           className="grid grid-cols-1 md:grid-cols-2 gap-5"
         >
           {/* Inputs */}
+          <div className="flex flex-col gap-2">
           <input
-            {...register("first_name", { required: true })}
+            {...register("first_name", {
+                      required: "First Name is required",
+                      pattern: {
+                        value:
+                          /^[A-Za-z\s]+$/,
+                        message: "Only letters are allowed",
+                      },
+                    })}
             placeholder="First Name"
             className="input-modern"
           />
-
+          {errors.first_name && (
+                    <p className="text-red-500 text-xs">{errors.first_name.message}</p>
+                  )}
+                  </div>
+                  <div className="flex flex-col gap-2">
           <input
-            {...register("last_name", { required: true })}
+            {...register("last_name", {
+                      required: "Last Name is required",
+                      pattern: {
+                        value:
+                          /^[A-Za-z\s]+$/,
+                        message: "Only letters are allowed",
+                      },
+                    })}
             placeholder="Last Name"
             className="input-modern"
           />
-
+          {errors.last_name && (
+                    <p className="text-red-500 text-xs">{errors.last_name.message}</p>
+                  )}
+</div>
+<div className="flex flex-col gap-2">
           <input
-            {...register("email", { required: true })}
+           {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value:
+                          /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|net|org|in)$/,
+                        message: "Invalid email",
+                      },
+                    })}
             type="email"
             placeholder="Email"
             className="input-modern"
           />
-
+          {errors.email && (
+                    <p className="text-red-500 text-xs">{errors.email.message}</p>
+                  )}
+</div>
+<div className="flex flex-col gap-2">
           <input
-            {...register("phone", { required: true })}
+            {...register("phone", {
+            required: "Phone number is required",
+            validate: {
+  validFormat: (value) => {
+    if (value === "") return true;
+
+    const plusCount = (value.match(/\+/g) || []).length;
+
+    if (plusCount > 1) {
+      return "Only one '+' is allowed";
+    }
+
+    if (value.includes("+") && !value.startsWith("+")) {
+      return "'+' must be at the beginning";
+    }
+
+    if (!/^[+]?[0-9]*$/.test(value)) {
+      return "Only digits and '+' at the beginning are allowed";
+    }
+
+    if (value.length > 16) {
+      return "Phone number too long";
+    }
+
+    return true;
+  },
+}
+          })}
+          onInput={(e) => {
+           e.preventDefault();
+  let paste = (e.clipboardData || window.clipboardData).getData("text");
+
+  paste = paste.replace(/[^0-9+]/g, "");
+
+  if (paste.startsWith("+")) {
+    paste = "+" + paste.slice(1).replace(/\+/g, "");
+  } else {
+    paste = paste.replace(/\+/g, "");
+  }
+
+  setValue("phone", paste.slice(0, 15));
+  }}
+  onPaste={(e) => {
+  e.preventDefault();
+  let paste = (e.clipboardData || window.clipboardData).getData("text");
+
+  paste = paste.replace(/[^0-9+]/g, "");
+
+  if (paste.startsWith("+")) {
+    paste = "+" + paste.slice(1).replace(/\+/g, "");
+  } else {
+    paste = paste.replace(/\+/g, "");
+  }
+
+  setValue("phone", paste.slice(0, 15));
+}}
             placeholder="Phone Number"
             className="input-modern"
           />
-
+          {errors.phone && (
+                    <p className="text-red-500 text-xs">{errors.phone.message}</p>
+                  )}
+</div>
+<div className="flex flex-col gap-2 md:col-span-2">
           <input
-            {...register("address")}
+            {...register("address", { required: "Address is required"})}
             placeholder="Address"
-            className="input-modern md:col-span-2"
+            className="input-modern "
           />
-
+          {errors.address && (
+                    <p className="text-red-500 text-xs">{errors.address.message}</p>
+                  )}
+</div>
+<div className="flex flex-col gap-2">
           <input
-            {...register("country")}
+            {...register("country", { required: "Country is required" })}
             placeholder="Country"
             className="input-modern"
           />
-
+          {errors.country && (
+                    <p className="text-red-500 text-xs">{errors.country.message}</p>
+                  )}
+</div>
+<div className="flex flex-col gap-2">
           <input
-            {...register("amount", { required: true })}
+            {...register("amount", { required: "Please donate some amount" })}
             type="number"
             placeholder="Donate Amount"
             className="input-modern"
           />
-
+          {errors.amount && (
+                    <p className="text-red-500 text-xs">{errors.amount.message}</p>
+                  )}
+</div>
+<div className="flex flex-col gap-2 md:col-span-2">
           <textarea
             {...register("comments")}
             placeholder="Comments"
             rows={4}
-            className="input-modern md:col-span-2"
+            className="input-modern "
           />
-
+</div>
           {/* Submit Button */}
           <button
             type="submit"

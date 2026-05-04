@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { getWorks, getImageById } from "../../../Api/Api";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -50,34 +51,34 @@ const RecentWork = () => {
   // 🔥 GSAP Animation
   useEffect(() => {
     const ctx = gsap.context(() => {
-    gsap.fromTo(
-  cardsRef.current,
-  {
-    y: 140,
-    opacity: 0,
-    scale: 0.96
-  },
-  {
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    duration: 1.6,
-    ease: "expo.out",
-    stagger: 0.4,
-    scrollTrigger: {
-      trigger: sectionRef.current,
+      gsap.fromTo(
+        cardsRef.current,
+        {
+          y: 140,
+          opacity: 0,
+          scale: 0.96
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1.6,
+          ease: "expo.out",
+          stagger: 0.4,
+          scrollTrigger: {
+            trigger: sectionRef.current,
 
-      start: "top 70%",   // ⬅️ starts ONLY when section is clearly visible
-      end: "top 30%",
+            start: "top 70%",   // ⬅️ starts ONLY when section is clearly visible
+            end: "top 30%",
 
-      toggleActions: "play none none reset", 
-      // ⬅️ resets if you scroll away (optional but useful)
+            toggleActions: "play none none reset",
+            // ⬅️ resets if you scroll away (optional but useful)
 
-      once: true, 
-      // ⬅️ ensures it runs only when user actually reaches it
-    }
-  }
-)
+            once: true,
+            // ⬅️ ensures it runs only when user actually reaches it
+          }
+        }
+      )
     }, sectionRef);
 
     return () => ctx.revert();
@@ -89,13 +90,20 @@ const RecentWork = () => {
 
         {/* Heading */}
         <div className="mb-12">
-          <p className="relative inline-block text-[#FFAC00] text-xl md:text-[24px] font-caveat font-bold after:content-[''] after:absolute after:left-0 after:top-0 after:w-1/2 after:border-t-2 after:border-yellow-500">
-            Complete Projects
-          </p>
-
-          <h2 className="text-[32px] lg:text-[50px] leading-[45px] lg:leading-[60px] tracking-[-2px] font-bold text-gray-800 font-display">
-            Our Recent Work
-          </h2>
+          <div className="w-10 h-[2px] bg-[#FFAC00]" />
+                  <p className="text-md md:text-2xl text-[#FFAC00] italic font-caveat pt-1">
+                    Complete Projects
+                  </p>
+          <div className="flex justify-between items-center">
+            <h2 className="text-[32px] lg:text-[50px] leading-[45px] lg:leading-[60px] tracking-[-2px] font-bold text-gray-800 font-display">
+              Our Recent Work
+            </h2>
+            <Link to="/event" className="bg-[#FFAC00] -skew-x-[12deg] px-7 py-2 text-sm md:text-base md:px-12 md:py-4 hover:bg-[#1F6B5A] hover:scale-110 transition-all duration-300 cursor-pointer">
+              <span className="block skew-x-[12deg] text-white text-sm font-semibold uppercase">
+                View All
+              </span>
+            </Link>
+          </div>
         </div>
 
         {/* Grid */}

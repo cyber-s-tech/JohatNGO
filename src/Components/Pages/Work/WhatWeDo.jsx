@@ -30,11 +30,12 @@ const WhatWeDo = () => {
   }
 
   return (
-    <section className="bg-[#f6f2ec] py-14 sm:py-16 lg:py-20 px-4 sm:px-6">
-      <div className="max-w-[1440px] mx-auto px-2 sm:px-4 md:px-6 lg:px-12 xl:px-[72px] text-center">
+    <section className="bg-[#F6F3EA] py-14 sm:py-16 lg:py-20">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 xl:px-[72px] text-center">
 
         {/* Heading */}
-        <p className="relative inline-block text-[#FFAC00] text-lg sm:text-xl md:text-[22px] font-caveat font-bold after:content-[''] after:absolute after:left-0 after:top-0 after:w-1/2 after:border-t-2 after:border-yellow-500">
+        
+        <p className="relative inline-block text-[#FFAC00] text-lg sm:text-xl md:text-[22px] font-caveat font-bold after:content-[''] after:absolute after:left-0 after:top-0 after:w-1/2 after:border-t-2 after:border-yellow-500 pt-2">
           What We Do
         </p>
 
@@ -43,7 +44,7 @@ const WhatWeDo = () => {
         </h2>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {data.map((item, index) => {
             const title = item.title.rendered;
             const desc = item.content.rendered;
@@ -56,11 +57,11 @@ const WhatWeDo = () => {
                 key={index}
                 className="
                 bg-[#f1ede7] rounded-2xl 
-                p-4 sm:p-5 lg:p-6 
+                p-4
                 flex flex-col lg:flex-row 
                 items-center
                 gap-4 lg:gap-6 
-                border border-gray-200 
+                border border-[#D7D7D7] 
                 shadow-[0_2px_8px_rgba(0,0,0,0.05)]
                 "
               >
@@ -92,25 +93,9 @@ const WhatWeDo = () => {
 
                   <button
                     onClick={() => handleOpen(title)}
-                    className="relative inline-block group cursor-pointer w-fit"
-                  >
-                    <svg
-                      width="185"
-                      height="46"
-                      viewBox="0 0 185 46"
-                      className="absolute top-0 left-0 w-full h-full"
-                    >
-                      <rect
-                        width="174.33"
-                        height="47.03"
-                        transform="matrix(1 0 -0.207912 0.978148 9.77832 0)"
-                        fill="#FFAC00"
-                        className="group-hover:fill-[#1F6B5A] transition-all duration-300"
-                      />
-                    </svg>
-
-                    <span className="relative z-10 text-white text-xs sm:text-sm font-semibold px-5 sm:px-6 py-2 sm:py-3 uppercase tracking-wide inline-block">
-                      {btn?.trim() ? btn : "Donate Now"}
+                    className="relative inline-block  cursor-pointer w-fit bg-[#FFAC00] -skew-x-[12deg] px-5 py-2 text-sm md:text-base hover:bg-[#1F6B5A] hover:scale-110 transition-all duration-300">
+                  <span className="block skew-x-[12deg] text-white text-sm font-semibold uppercase">
+                    {btn?.trim() ? btn : "Donate Now"}
                     </span>
                   </button>
                 </div>

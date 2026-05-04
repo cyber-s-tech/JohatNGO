@@ -32,7 +32,7 @@ const CallToAction = () => {
         {/* Skewed CTA Button */}
         <div className="pt-4 flex justify-center">
            <Link to="/contact">
-          <button className="cursor-pointer bg-[#FFAC00] text-white font-bold px-8 py-3 lg:py-4 lg:px-15 uppercase tracking-widest text-xs transition-colors duration-200 transform -skew-x-12">
+          <button className="bg-[#FFAC00] text-white font-bold px-8 py-3 lg:py-4 lg:px-15 uppercase tracking-widest text-xs  transform -skew-x-12 hover:bg-[#1F6B5A] hover:scale-110 transition-all duration-300 cursor-pointer">
             <span className="inline-block skew-x-12">Join Now</span>
           </button>
           </Link>
