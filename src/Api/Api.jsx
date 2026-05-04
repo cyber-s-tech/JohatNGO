@@ -65,3 +65,13 @@ export const submitDonationEntry = async (data) => {
   );
   return res.data;
 };
+
+
+// ==============================
+// 🔥 FAQ API
+// ==============================
+
+export const getFaqs = async () => {
+  const res = await API.get("/faq?_embed");
+  return res.data;
+};

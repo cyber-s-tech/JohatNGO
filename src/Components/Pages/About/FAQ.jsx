@@ -1,37 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import faqBg from "../../../assets/faq-bg.png";
 import faqImg from "../../../assets/faq-left.png";
 import { CaretDown } from "@phosphor-icons/react";
-
-const faqs = [
-    {
-        question: "How to donate anonymously to cause?",
-        answer:
-            "Suspendisse finibus urna mauris, vitae free text consequat quam vel. Vestibulum leo ligula, vitae commodo nisl.",
-    },
-    {
-        question: "How to donate anonymously to cause?",
-        answer:
-            "Suspendisse finibus urna mauris, vitae free text consequat quam vel.",
-    },
-    {
-        question: "How to donate anonymously to cause?",
-        answer:
-            "Suspendisse finibus urna mauris, vitae free text consequat quam vel.",
-    },
-    {
-        question: "How to donate anonymously to cause?",
-        answer:
-            "Suspendisse finibus urna mauris, vitae free text consequat quam vel.",
-    },
-];
+import { getFaqs } from "../../../Api/Api"; // ✅ import API
 
 const FAQ = () => {
     const [active, setActive] = useState(0);
+    const [faqs, setFaqs] = useState([]); // ✅ dynamic data
 
     const toggleFAQ = (index) => {
         setActive(active === index ? null : index);
     };
+
+    // ✅ FETCH DATA
+    useEffect(() => {
+        const fetchFaqs = async () => {
+            try {
+                const data = await getFaqs();
+                setFaqs(data);
+            } catch (error) {
+                console.error("FAQ fetch error:", error);
+            }
+        };
+
+        fetchFaqs();
+    }, []);
 
     return (
         <section
@@ -69,7 +62,7 @@ const FAQ = () => {
                         <div className="space-y-[15px]">
                             {faqs.map((item, index) => (
                                 <div
-                                    key={index}
+                                    key={item.id}
                                     className="bg-white rounded-[6px] shadow-md overflow-hidden"
                                 >
                                     <button
@@ -77,13 +70,14 @@ const FAQ = () => {
                                         className="w-full flex justify-between items-center text-left px-5 py-4"
                                     >
                                         <h3 className="font-display text-[18px] md:text-[24px] font-semibold text-[#1F2937]">
-                                            {index + 1}. {item.question}
+                                            {index + 1}. {item.title.rendered}
                                         </h3>
 
                                         {/* ARROW */}
                                         <span
-                                            className={`transition-transform duration-300 ${active === index ? "rotate-180" : ""
-                                                }`}
+                                            className={`transition-transform duration-300 ${
+                                                active === index ? "rotate-180" : ""
+                                            }`}
                                         >
                                             <CaretDown size={20} weight="bold" className="text-[#1F2937]" />
                                         </span>
@@ -91,9 +85,12 @@ const FAQ = () => {
 
                                     {active === index && (
                                         <div className="px-5 pb-4">
-                                            <p className="text-[16px] text-[#434242]">
-                                                {item.answer}
-                                            </p>
+                                            <p
+                                                className="text-[16px] text-[#434242]"
+                                                dangerouslySetInnerHTML={{
+                                                    __html: item.content.rendered,
+                                                }}
+                                            />
                                         </div>
                                     )}
                                 </div>
