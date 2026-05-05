@@ -1,8 +1,13 @@
 import React from 'react'
+import AllEventWork from './AllEventWork'
+import EventBanner from './EventBanner'
 
 const EventComponents = () => {
   return (
-    <div>EventComponents</div>
+    <div>
+      <EventBanner/>
+      <AllEventWork/>
+    </div>
   )
 }
 
