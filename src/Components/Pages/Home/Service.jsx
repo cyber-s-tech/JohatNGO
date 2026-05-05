@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import {ArrowRightIcon} from "@phosphor-icons/react";
+import { ArrowRightIcon } from "@phosphor-icons/react";
 import { getServices, getImageById } from "../../../Api/Api";
+import { Link } from "react-router-dom";
 
 const Service = () => {
   const [services, setServices] = useState([]);
@@ -22,7 +23,7 @@ const Service = () => {
               const url = await getImageById(id);
               imgMap[id] = url;
             }
-          })
+          }),
         );
 
         setImages(imgMap);
@@ -37,18 +38,18 @@ const Service = () => {
   }, []);
 
   // 🎨 Gradient mapping (exact tone)
- const getGradient = (color) => {
-  switch (color) {
-    case "green":
-      return "from-teal-400 via-teal-500 to-transparent";
-    case "yellow":
-      return "from-yellow-400 via-orange-400 to-transparent";
-    case "teal":
-      return "from-green-400 via-teal-500 to-transparent";
-    default:
-      return "from-gray-300 to-transparent";
-  }
-};
+  const getGradient = (color) => {
+    switch (color) {
+      case "green":
+        return "from-teal-400 via-teal-500 to-transparent";
+      case "yellow":
+        return "from-yellow-400 via-orange-400 to-transparent";
+      case "teal":
+        return "from-green-400 via-teal-500 to-transparent";
+      default:
+        return "from-gray-300 to-transparent";
+    }
+  };
   if (loading) {
     return (
       <div className="text-center py-20 text-lg font-semibold">
@@ -58,68 +59,64 @@ const Service = () => {
   }
 
   return (
-<div className="py-24 bg-gray-100">
-  <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 xl:px-[72px] grid md:grid-cols-2 lg:grid-cols-3 gap-16 lg:gap-5 xl:gap-24">
+    <div className="py-24 bg-gray-100">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 xl:px-[72px] grid md:grid-cols-2 lg:grid-cols-3 gap-16 lg:gap-5 xl:gap-24">
+        {services.map((item, i) => {
+          const acf = item.acf;
+          const imageUrl = images[acf?.image];
 
-    {services.map((item, i) => {
-      const acf = item.acf;
-      const imageUrl = images[acf?.image];
+          return (
+            <div key={i} className="relative">
+              {/* 🔥 GRADIENT BORDER (thin & soft) */}
+              <div
+                className={`p-[15px] rounded-2xl bg-gradient-to-b ${getGradient(
+                  acf?.color,
+                )}`}
+              >
+                {/* 🔥 INNER CARD */}
+                <div className="bg-white rounded-2xl pt-20 pb-12 px-8 text-center relative shadow-sm">
+                  {/* 🔵 IMAGE (perfect overlap) */}
+                  <div className="absolute -top-14 left-1/2 -translate-x-1/2">
+                    <div className="bg-white  rounded-full shadow-md">
+                      <img
+                        src={imageUrl}
+                        alt=""
+                        className="w-30 h-30 rounded-full object-cover"
+                      />
+                    </div>
+                  </div>
 
-      return (
-        <div key={i} className="relative">
-
-          {/* 🔥 GRADIENT BORDER (thin & soft) */}
-          <div
-            className={`p-[15px] rounded-2xl bg-gradient-to-b ${getGradient(
-              acf?.color
-            )}`}
-          >
-
-            {/* 🔥 INNER CARD */}
-            <div className="bg-white rounded-2xl pt-20 pb-12 px-8 text-center relative shadow-sm">
-
-              {/* 🔵 IMAGE (perfect overlap) */}
-              <div className="absolute -top-14 left-1/2 -translate-x-1/2">
-                <div className="bg-white  rounded-full shadow-md">
-                  <img
-                    src={imageUrl}
-                    alt=""
-                    className="w-30 h-30 rounded-full object-cover"
+                  {/* 🧠 TITLE */}
+                  <h3
+                    className="text-lg xl:text-[22px] font-bold  text-gray-800 mb-3 leading-snug font-display"
+                    dangerouslySetInnerHTML={{
+                      __html: item.title.rendered,
+                    }}
                   />
+
+                  {/* 📄 DESCRIPTION */}
+                  <p className="text-gray-500 text-[14px] leading-6 px-2">
+                    {acf?.description}
+                  </p>
+
+                  {/* ➡️ BUTTON */}
+                  <div className="mt-8 -mb-18 flex justify-center z-20">
+                    <Link to="/our-work">
+                      <div className="cursor-pointer w-12 h-12 rounded-full bg-[#F2F2F2] flex items-center justify-center text-gray-500 shadow-sm hover:bg-[#FFAC00] hover:text-white transition duration-300">
+                        <ArrowRightIcon size={16} weight="bold" />
+                      </div>
+                    </Link>
+                  </div>
+
+                  {/* 🔥 BOTTOM FADE (important) */}
+                  <div className=" -z-10 absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-gray-100/80 to-transparent rounded-b-2xl pointer-events-none"></div>
                 </div>
               </div>
-
-              {/* 🧠 TITLE */}
-              <h3
-                className="text-lg xl:text-[22px] font-bold  text-gray-800 mb-3 leading-snug font-display"
-                dangerouslySetInnerHTML={{
-                  __html: item.title.rendered,
-                }}
-              />
-
-              {/* 📄 DESCRIPTION */}
-              <p className="text-gray-500 text-[14px] leading-6 px-2">
-                {acf?.description}
-              </p>
-
-              {/* ➡️ BUTTON */}
-              <div className="mt-8 -mb-18 flex justify-center z-20">
-                <div className="cursor-pointer w-12 h-12 rounded-full bg-[#F2F2F2] flex items-center justify-center text-gray-500 shadow-sm">
-                 <ArrowRightIcon size={16} weight="bold" />
-                </div>
-              </div>
-
-              {/* 🔥 BOTTOM FADE (important) */}
-              <div className=" -z-10 absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-gray-100/80 to-transparent rounded-b-2xl pointer-events-none"></div>
-
             </div>
-          </div>
-        </div>
-      );
-    })}
-
-  </div>
-</div>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 
