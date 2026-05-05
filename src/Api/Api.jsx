@@ -49,6 +49,19 @@ export const submitDonation = async (data) => {
   return res.data;
 };
 
+export const submitContactEntry = async (data) => {
+  const res = await fetch("https://johatngo.ahaanmedia.com/wp-json/contact-entry/v1/submit", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  const result = await res.json();   // ✅ REQUIRED
+  return result;
+};
+
 // ==============================
 // 🔥 WHAT WE DO API
 // ==============================

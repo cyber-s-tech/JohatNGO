@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { submitDonationEntry } from "../../../Api/Api";
 
 const DonationPopupForm = ({ isOpen, onClose, service }) => {
+  const [submitting, setSubmitting] = useState(false);
   const {
       register,
       handleSubmit,
@@ -17,12 +18,27 @@ const DonationPopupForm = ({ isOpen, onClose, service }) => {
       },
     });
   
+const onSubmitForm = async (data) => {
+  try {
+    console.log("Sending Data:", data); // 👈 CHECK THIS FIRST
 
- const onSubmitForm = (data) => {
-  console.log("Pop up Form Data:", data);
-  console.log("Submitted Successfully");
+    const res = await submitDonationEntry(data);
 
-  reset();
+    console.log("API Response:", res); // 👈 CHECK RESPONSE
+
+    if (res?.success || res?.status === 200) {
+      alert("✅ Submitted!");
+      reset();
+      onClose();
+    } else {
+      console.log("Unexpected response:", res);
+      alert("❌ Submission failed");
+    }
+
+  } catch (err) {
+    console.error("API ERROR:", err);
+    alert("❌ Error submitting form");
+  }
 };
 
   if (!isOpen) return null;

@@ -13,7 +13,7 @@ const VolunteerDonateSection = () => {
         {/*  Overlay */}
       <div className="bg-[#F6F3EA] w-full h-[133px]"></div>    
           {/* 🔥 CARD 1 */}
-        <div className=" max-w-7xl pb-12 px-6 mx-auto grid md:grid-cols-2 gap-5 -mt-[133px]">
+        <div className=" max-w-[1440px] pb-12 px-4 md:px-8 lg:px-12 xl:px-[72px] mx-auto grid md:grid-cols-2 gap-5 -mt-[133px]">
           {/* 🔥 CARD 1 */}
           <div className="relative rounded-3xl overflow-hidden">
             {/* Image */}
@@ -27,7 +27,7 @@ const VolunteerDonateSection = () => {
             <div className="absolute inset-0 bg-[#1f6f64]/80"></div>
 
             {/* Content */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-white">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
               <h2 className="text-3xl md:text-4xl font-bold font-display mb-3">
                 Become a Volunteer
               </h2>
@@ -59,7 +59,7 @@ const VolunteerDonateSection = () => {
             <div className="absolute inset-0 bg-black/70"></div>
 
             {/* Content */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-white">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
               <h2 className="text-3xl md:text-4xl font-bold font-display mb-3">
                 Donate Now
               </h2>

@@ -10,9 +10,9 @@ const CounterSection = () => {
     <div className="relative z-20 mt-25 ">
 
       {/* 🔥 FLOATING COUNTER */}
-      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl">
+      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-full max-w-[1440px] px-4 md:px-8 lg:px-12 xl:px-[72px]">
         
-        <div className="bg-[#f59e0b] rounded-2xl shadow-xl py-8 px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-white text-center">
+        <div className="bg-[#FFAC00] rounded-2xl shadow-xl py-8 px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-white text-center">
 
           <div className="flex flex-col items-center">
             <Users size={40} />
